@@ -1,0 +1,47 @@
+%///////////////////////////////////////////////////////////////
+% Example 1
+% 2nd order DC blocker, 20 Hz, sampling frequency = 44.1kHz
+% Plots the filter response and sample signals 
+%///////////////////////////////////////////////////////////////
+pkg load signal
+order=2
+f1=20
+fs=44100
+plot_results=true
+
+design_iir_highpass_cmsis_butter(order,f1,fs,plot_results);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%///////////////////////////////////////////////////////////////
+% Example 2
+% Elliptical bandpass between 150 and 600 Hz, 1dB ripple, 60dB
+% stopband attenuation
+%///////////////////////////////////////////////////////////////
+pkg load signal
+order=4
+ripple=1
+att=60
+f1=150
+f2=600
+fs=16000
+plot_results=false
+
+design_iir_bandpass_cmsis_elliptical(order,ripple,att,f1,f2,fs,plot_results);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%///////////////////////////////////////////////////////////////
+% Example 3
+& Same as frequencies sd example 2, but designed as Butterworth 
+% filter
+%///////////////////////////////////////////////////////////////
+pkg load signal
+order=4
+f1=150
+f2=600
+fs=16000
+plot_results=false
+
+design_iir_bandpass_cmsis_butter(order,f1,f2,fs,plot_results);
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
