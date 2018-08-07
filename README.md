@@ -24,22 +24,17 @@ coeffs =
 
 That array of coefficients can be directly used in ARM code like the following:
 ```
-#define IIR_ORDER     4
+#define IIR_ORDER     2
 #define IIR_NUMSTAGES (IIR_ORDER/2)
 
 static float32_t m_biquad_state[IIR_ORDER];
 static float32_t m_biquad_coeffs[5*IIR_NUMSTAGES] =
 {
-  0.0078811,
-  0.0121702,
-  0.0078811,
-  1.8100760,
-  -0.8584909,
-  1.0000000,
-  -1.9999937,
-  1.0000000,
-  1.9564750,
-  -0.9600834
+   0.99799,
+  -1.99597,
+   0.99799,
+   1.99597,
+  -0.99598
 };
 
 arm_biquad_cascade_df2T_instance_f32 const iir_inst = 
