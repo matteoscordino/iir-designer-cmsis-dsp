@@ -1,7 +1,7 @@
 # iir-designer-cmsis-dsp
 A collection of GNU Octave scripts to design IIR filters that can be HW accelerated on ARM Cortex cores via CMSIS DSP.
 
-These filter have been written by [Silex Embedded](https://silexembedded.co.uk) and [Elimo Engineering](http://elimo.io)
+These filters have been written by [Silex Embedded](https://silexembedded.co.uk) and [Elimo Engineering](https://elimo.io)
 
 These scripts compute the coefficients for IIR filters implementented as [biquad cascade using a Direct Form II transposed structure](http://www.keil.com/pack/doc/CMSIS/DSP/html/group__BiquadCascadeDF2T.html "Biquad DF2 documentation").
 This is the IIR implementation that is used by ARM's [CMSIS DSP](http://www.keil.com/pack/doc/CMSIS/DSP/html/index.html "CMSIS DSP' documentation"), which means they can run optimally on ARM Cortex cores over floating point data.
