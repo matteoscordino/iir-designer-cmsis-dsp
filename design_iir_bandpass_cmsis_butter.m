@@ -12,7 +12,7 @@ order = requested_order/2;
 % Nyquist frequency, for convenience
 fNyquist=fs/2;
 % design filter in zeros, poles, gain format
-[z,p,k] = butter(order,[f1 f2]/fNyquist);
+[z,p,k] = butter(order,[f1 f2]/fNyquist, 'bandpass');
 % convert it to the second order sections (used for biquads) format
 [sos] = zp2sos(z,p,k);
 
@@ -29,7 +29,7 @@ coeffs = coeffs(:);
 if (plot_results == true)
 	%plot the frequency response, just for human reference
 	% (we need to redesign the filter in b,a format)
-	[b,a] = butter(order,f1/fNyquist, 'high');
+	[b,a] = butter(order,[f1 f2]/fNyquist, 'bandpass');
 	[h, w] = freqz (b,a);
 	figure(1)
 	plot (w./pi, 20*log10 (abs (h)), ";;")

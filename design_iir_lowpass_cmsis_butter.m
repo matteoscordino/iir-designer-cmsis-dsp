@@ -5,12 +5,12 @@
 % @brief M file to design a lowpass Butterworth filter and get the coefficients for CMSIS DSP
 % 
 
-function design_iir_highpass_cmsis_butter(requested_order, f1, fs, plot_results)
+function design_iir_lowpass_cmsis_butter(requested_order, f1, fs, plot_results)
 order = requested_order;
 % Nyquist frequency, for convenience
 fNyquist=fs/2;
 % design filter in zeros, poles, gain format
-[z,p,k] = butter(order, f1/fNyquist, 'high');
+[z,p,k] = butter(order, f1/fNyquist, 'low');
 % convert it to the second order sections (used for biquads) format
 [sos] = zp2sos(z,p,k);
 
@@ -27,7 +27,7 @@ coeffs = coeffs(:);
 if (plot_results == true)
 	%plot the frequency response, just for human reference
 	% (we need to redesign the filter in b,a format)
-	[b,a] = butter(order,f1/fNyquist, 'high');
+	[b,a] = butter(order,f1/fNyquist, 'low');
 	[h, w] = freqz (b,a);
 	figure(1)
 	plot (w./pi, 20*log10 (abs (h)), ";;")
