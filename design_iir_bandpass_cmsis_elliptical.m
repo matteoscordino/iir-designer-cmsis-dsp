@@ -29,7 +29,7 @@ coeffs = coeffs(:);
 if (plot_results == true)
 	%plot the frequency response, just for human reference
 	% (we need to redesign the filter in b,a format)
-	[b,a] = butter(order,f1/fNyquist, 'high');
+	[b,a] = butter(order,f1/fNyquist, 'bandpass');
 	[h, w] = freqz (b,a);
 	figure(1)
 	plot (w./pi, 20*log10 (abs (h)), ";;")
